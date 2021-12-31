@@ -43,6 +43,7 @@ post_r=4.5;
 post_inset=post_r-tol;
 post_h=(h-2*post_inset)/2;
 post_w=(w-2*post_inset)/2;
+post_setback=lip;
 // Counter sinks
 nut_width=5.6;
 nut_height=2.4;
@@ -65,11 +66,12 @@ module box() {
             }
             translate([w_center, h_center, 0])
             bolt_posts(post_r, d+base+lip);
-            //posts(post_r, bolt_hole_r, d+lip);
         }
-        translate([w_center, h_center, 0])
-        counter_sunk_holes(bolt_hole_r, d+base+lip,
-                           "hex", nut_width, nut_height);
+        translate([w_center, h_center, 0]) {
+            counter_sunk_holes(bolt_hole_r, d+base+lip,
+                               "hex", nut_width, nut_height);
+            box_post_setbacks();
+        }
     }
 }
 
@@ -110,5 +112,12 @@ module counter_sunk_holes(radius, height, type, width, depth){
                 cylinder(r=width,h=depth+tol);
             }
         }
+    }
+}
+
+module box_post_setbacks() {
+    for(c = [[-1,1], [-1,-1], [1,1], [1,-1]]) {
+        translate([c[0]*post_w, c[1]*post_h, d+base])
+        cylinder(r=post_r+2*tol,h=post_setback+tol);
     }
 }
