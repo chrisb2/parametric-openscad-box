@@ -1,0 +1,3 @@
+[submodule "smooth-prim"]
+	path = smooth-prim
+	url = https://github.com/rcolyer/smooth-prim.git

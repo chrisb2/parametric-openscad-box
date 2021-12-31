@@ -1,6 +1,6 @@
 $fn=100;
 
-use <smooth_prim.scad>
+use <smooth-prim/smooth_prim.scad>
 
 box();
 translate([0,-h-2*wall-8,0])
