@@ -25,7 +25,7 @@ h=85;
 h_outer=h+2*wall;
 h_center=h_outer/2;
 // inner box depth 
-d=50;
+d=47.3;
 // outer corner radius
 outer_r=6;
 // inner corner radius
@@ -44,11 +44,12 @@ post_inset=post_r-tol;
 post_h=(h-2*post_inset)/2;
 post_w=(w-2*post_inset)/2;
 // Counter sinks
-nut_width=5.5;
+nut_width=5.6;
 nut_height=2.4;
-bolt_head_r=3.1;
+bolt_head_r=3.15;
 bolt_head_height=2.3;
-
+bolt_length=d+base+top-bolt_head_height;
+echo("Bolt length: ", bolt_length);
 
 module box() {
     difference() {
